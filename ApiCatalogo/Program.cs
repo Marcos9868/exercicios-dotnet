@@ -12,6 +12,8 @@ builder.Services.AddDbContext<DataContext>(options =>
         connection
     );
 });
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -20,4 +22,5 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapControllers();
 app.Run();
