@@ -1,5 +1,7 @@
+using System.Text.Json.Serialization;
 using ApiCatalogo.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -12,7 +14,10 @@ builder.Services.AddDbContext<DataContext>(options =>
         connection
     );
 });
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options => 
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 
 var app = builder.Build();
 
