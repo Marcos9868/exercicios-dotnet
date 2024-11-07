@@ -17,6 +17,6 @@ namespace ApiCatalogo.Models
         [Required]
         [StringLength(300)]
         public string ImagemUrl { get; set; } = string.Empty;
-        public ICollection<Produto> Produtos { get; set; }
+        public ICollection<Produto>? Produtos { get; set; }
     }
 }

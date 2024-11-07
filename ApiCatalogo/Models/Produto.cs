@@ -1,10 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ApiCatalogo.Models
 {
     public class Produto
     {
+        [JsonIgnore]
         [Key]
         public int Id { get; set; }
         [Required]
@@ -22,6 +24,7 @@ namespace ApiCatalogo.Models
         public float Estoque { get; set; }        
         public DateTime DataCadastro { get; set; } =  DateTime.Now; 
         public int CategoriaId { get; set; }
-        public Categoria Categoria { get; set; }       
+        [JsonIgnore]
+        public Categoria? Categoria { get; set; }       
     }
 }
