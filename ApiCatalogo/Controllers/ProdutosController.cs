@@ -17,7 +17,7 @@ namespace ApiCatalogo.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var produtos = await _context.Produtos.ToListAsync();
+            var produtos = await _context.Produtos.AsNoTracking().ToListAsync();
             if (produtos == null) return NotFound();
             return Ok(produtos);
         }
